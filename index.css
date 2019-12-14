@@ -3,7 +3,6 @@ body {
   padding: 0;
   font-family: 'Open Sans', sans-serif;
   overflow: hidden;
-  transition: 1s;
 }
 
 
@@ -52,8 +51,8 @@ li span:hover {
 }
 .main-page {
   text-align: center;
-  opacity: 0;
-  z-index: 0;
+  opacity: 1;
+  z-index: 1;
   width: 100vw;
   height: 100vh;
   background: #333;
@@ -85,8 +84,8 @@ li span:hover {
 
 
 .build-page {
-  opacity: 1;
-  z-index: 1;
+  opacity: 0;
+  z-index: 0;
 }
 
 .instruction-page {
@@ -119,8 +118,8 @@ li span:hover {
   transition: 1s;
 }
 .chart-title {
-  z-index: 1;
-  opacity: 1;
+  z-index: 0;
+  opacity: 0;
 }
 .chart-value {
   position:absolute;
@@ -168,6 +167,6 @@ li span:hover {
   position:relative;
   width: 99.9vw;
   height: 90vh;
-  z-index: 1;
-  opacity: 1;
+  z-index: 0;
+  opacity: 0;
 }
