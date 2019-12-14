@@ -23,11 +23,11 @@ For example: %
 Same as the value type input, you can set it to be any thing.
 For example: Type 
 
-#####Example:
- For the input 
+##### Example:
+ For the input  
 ![data example][dataExample]
 
- The result will be:
+ The result will be:  
 ![chartExample][chartExample]
 
 [dataExample]: ./img/DataExample.png
