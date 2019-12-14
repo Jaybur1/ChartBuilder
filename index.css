@@ -1,0 +1,173 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  overflow: hidden;
+  transition: 1s;
+}
+
+
+ul {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #333;
+  margin-top:-10px;
+}
+
+li {
+  float: left;
+}
+
+li span {
+  text-align: center;
+  display: block;
+  color: #fff;
+  padding:30px 25px;
+  transition:background 1s;
+  
+}
+
+li span:hover {
+  cursor: pointer;
+  background: #111;
+}
+#logo {
+  float:right;
+  margin-right: 20px;
+  padding-top: 3px;
+  width:150px;
+  height: 80px;
+  transition: transform 1s;
+
+}
+#logo:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.pages {
+  position: absolute;
+  transition: 1s;
+}
+.main-page {
+  text-align: center;
+  opacity: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #333;
+}
+#main-logo {
+  position: relative;
+  left:13%;
+}
+
+#start-btn {
+  font-size: 1.6em;
+  background: #333;
+  color:#fff;
+  position: relative;
+  right:23%;
+  top:20px;
+  width:30vw;
+  height:10vh;
+  outline: none;
+  border: none;
+  transition:background 1s;
+}
+
+#start-btn:hover {
+  background: #111;
+  cursor: pointer;
+}
+
+
+
+.build-page {
+  opacity: 1;
+  z-index: 1;
+}
+
+.instruction-page {
+  opacity: 0;
+  z-index: 0;
+}
+.example-page {
+  opacity: 0;
+  z-index: 0;
+}
+.chart {
+  z-index: 0;
+  opacity: 0;
+}
+.chart-box {
+  border:1px solid black ;
+  border-bottom:none;
+  border-right:none;
+  position:relative;
+  top:25vh ;
+  left: 48vw;
+  transform:translate(-50%,-50%)rotate(-90deg);
+  background: repeating-linear-gradient(
+    to right,
+    #ffdfd3,
+    #ddd 2px,
+    #fff 2px,
+    #fff 25%
+  );
+  transition: 1s;
+}
+.chart-title {
+  z-index: 1;
+  opacity: 1;
+}
+.chart-value {
+  position:absolute;
+  bottom:100%;
+  left:110%;
+  transform:translate(-50%,-50%)rotate(90deg);
+}
+
+.chart-label {
+  position:absolute;
+  top:110%;
+  right:80%;
+  transform:translate(-50%,-50%)rotate(90deg);
+}
+
+.bar {
+  background: #ddd;
+  border: 1px solid black;
+  transition: 1s;
+  margin-top:5%;
+  margin-bottom:5%;
+}
+
+.bar-key {
+  font-size: 60%;
+  display:inline-block;
+  position:absolute;
+  transition: 1s;
+  left: 15px;
+  padding:5px;
+  margin-right:10%;
+}
+
+.bar-value {
+  font-size: 40%;
+  display:inline-block;
+  padding:5px;
+  margin-left:103%;
+  transform:translate(-50%,-50%)rotate(90deg);
+}
+
+.data-init {
+  text-align: center;
+  transition:0.3s;
+  position:relative;
+  width: 99.9vw;
+  height: 90vh;
+  z-index: 1;
+  opacity: 1;
+}

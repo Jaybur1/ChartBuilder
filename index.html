@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="index.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="nav-bar">
+    <ul style="list-style-type: none;">
+      <li class="nav-li"><span class="main-btn">Main</span></li>
+      <li class="nav-li"><span class="build-btn">Build Chart</span></li>
+      <li class="nav-li"><span class="instruction-btn">Instructions</span></li>
+      <li class="nav-li"><span class="example-btn">Examples</span></li>
+      <img id="logo" class="main-btn" src="./img/logo.png" alt="chart builder logo">
+    </ul>
+  </div>
+  <div class="main-page pages">
+    <img id="main-logo" src="./img/logo.png" alt="chart builder logo">
+    <button id="start-btn" class="build-btn">Let's Get started</button>
+  </div>
+  <div class="build-page pages">
+    <div id="chart"></div>
+    <div class="data-init">
+      <label for="titleType">Title: </label>
+      <input id="titleType" type="text" placeholder="ex: Best Chart 2019">
+      <br />
+
+      <label for="data">Data input: </label>
+      <input id="data" type="text" placeholder="ex: label value label value" required>
+
+      <label for="valueType">Value Type: </label>
+      <input id='valueType' type="text" placeholder="ex: % / $ ">
+
+      <label for="labelType">Label Type: </label>
+      <input id='labelType' type="text" placeholder="ex: groups">
+      <br />
+
+      <h5>Options</h5>
+      <br />
+      <label for="color">Color: </label>
+      <input id='color' type="color" value="#8AA7C4">
+  
+      <label for="hoverColor">Hover Color: </label>
+      <input id='hoverColor' type="color" value="#AFC8E1">
+  
+      <label for="labelColor">Label Color: </label>
+      <input id='labelColor' type="color" value="#000000">
+      <br />
+      <button id="create">Create</button>
+    </div>
+  </div>
+  <div class="instruction-page pages">
+    <h1>instruction page</h1>
+  </div>
+  <div class="example-page pages">
+    <h1>example Page</h1>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+</html>
