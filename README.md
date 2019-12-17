@@ -8,18 +8,18 @@
 
 ### How to use: 
 
-1. Data input
+1. Data input:  
 Please insert the label and then the value separeted with space.
 For example: label value label value
 
 Or if you dont need labels you can just put the values separeted with space.
 For example: value value value
 
-2. Value type input
+2. Value type input:  
 You can choose any value type you want
 For example: % 
 
-3. Label type input
+3. Label type input:  
 Same as the value type input, you can set it to be any thing.
 For example: Type 
 
