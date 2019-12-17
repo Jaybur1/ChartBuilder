@@ -3,6 +3,7 @@ body {
   padding: 0;
   font-family: 'Open Sans', sans-serif;
   overflow: hidden;
+  transition: 1s;
 }
 
 
@@ -91,6 +92,10 @@ li span:hover {
 .instruction-page {
   opacity: 0;
   z-index: 0;
+  height: 90vh;
+}
+.instruction-page ol{
+  display:grid;
 }
 .example-page {
   opacity: 0;
@@ -108,18 +113,13 @@ li span:hover {
   top:25vh ;
   left: 48vw;
   transform:translate(-50%,-50%)rotate(-90deg);
-  background: repeating-linear-gradient(
-    to right,
-    #ffdfd3,
-    #ddd 2px,
-    #fff 2px,
-    #fff 25%
-  );
+
   transition: 1s;
 }
 .chart-title {
-  z-index: 0;
-  opacity: 0;
+  text-align: center;
+  z-index: 1;
+  opacity: 1;
 }
 .chart-value {
   position:absolute;
@@ -135,38 +135,67 @@ li span:hover {
   transform:translate(-50%,-50%)rotate(90deg);
 }
 
-.bar {
-  background: #ddd;
-  border: 1px solid black;
-  transition: 1s;
-  margin-top:5%;
-  margin-bottom:5%;
-}
+
+
 
 .bar-key {
   font-size: 60%;
   display:inline-block;
   position:absolute;
-  transition: 1s;
+  transition: 0.4s;
   left: 15px;
   padding:5px;
   margin-right:10%;
+  text-shadow: 1px 1px 1px #fff;
 }
 
 .bar-value {
+  transition: 0.4s;
   font-size: 40%;
   display:inline-block;
   padding:5px;
   margin-left:103%;
   transform:translate(-50%,-50%)rotate(90deg);
+  text-shadow: 1px 1px 1px #fff;
+
 }
 
 .data-init {
   text-align: center;
   transition:0.3s;
-  position:relative;
-  width: 99.9vw;
-  height: 90vh;
+  position: absolute;
+  top:10vh;
+  left:20vw;
+  width: 60vw;
+  height: 60vh;
   z-index: 0;
   opacity: 0;
+  background: rgba(36, 33, 33,0.8);
+}
+
+.data-init input, label {
+  margin-top: 30px;
+}
+
+.data-init h5, button {
+  margin-top: 60px;
+}
+
+.optionsMenu {
+  position: absolute;
+  bottom:0;
+  left:0;
+}
+.optionsMenuBtns  {
+  background:none;
+  padding: 20px;
+  outline: none;
+  border: none;
+  transition: 0.5s;
+}
+
+.optionsMenuBtns:hover {
+  cursor: pointer;
+  color: #fff;
+  background: #111;
 }

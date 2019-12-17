@@ -1,35 +1,33 @@
-const data = [
-  [54, "html"],
-  [67, "js"],
-  [90, "pascal"],
-  [150, "turbo pascal"],
-  [30, "ruby"],
-  [54, "html"],
-  [67, "js"],
-  [90, "pascal"],
-  [150, "turbo pascal"],
-  [30, "ruby"],
-  [54, "html"],
-  [67, "js"],
-  [90, "pascal"],
-  [150, "turbo pascal"],
-  [30, "ruby"],
-  [54, "html"],
-  [67, "js"],
-  [90, "pascal"],
-  [150, "turbo pascal"],
-];
+//const data = [
+//  [54, "html"],
+//  [67, "js"],
+//  [90, "pascal"],
+//  [150, "turbo pascal"],
+//  [30, "ruby"],
+//  [54, "html"],
+//  [67, "js"],
+//  [90, "pascal"],
+//  [150, "turbo pascal"],
+//  [30, "ruby"],
+//  [54, "html"],
+//  [67, "js"],
+//  [90, "pascal"],
+//  [150, "turbo pascal"],
+//  [30, "ruby"],
+//  [54, "html"],
+//  [67, "js"],
+//  [90, "pascal"],
+//  [150, "turbo pascal"],
+//];
 const options = {
   valueType: "",
   labelType: "",
-  isLabeld: true,
   title: "Test Chart",
   height: 500,
   width: 300,
   barColor: "blue",
   hoverColor: "green",
-  labelColor: "black",
-  horizontal: false
+  created: false
 };
 
 //Variables
@@ -52,7 +50,9 @@ const dataInputBox = document.querySelector('.data-init');
 const dataInput = document.querySelector('#data');
 const valueTypeInput = document.querySelector('#valueType');
 const labelTypeInput = document.querySelector('#labelType');
-
+const titleInput = document.querySelector('#titleType');
+const colorInput = document.querySelector('#color');
+const hoverColorInput = document.querySelector('#hoverColor');
 
 //chart
 const chartDiv = document.querySelector("#chart");
@@ -78,21 +78,40 @@ const setVisiblePage = page => {
 };
 
 const setSectionsToDefault = () => {
-  dataInputBox.style.opacity = 0;
-  dataInputBox.style.zIndex = 0;
-  chartDiv.style.opacity = 0;
-  chartDiv.style.zIndex = 0;
-}
+  dataInputBox.style.opacity = -1;
+  dataInputBox.style.zIndex = -1;
+  chartDiv.style.opacity = -1;
+  chartDiv.style.zIndex = -1;
+};
 
 const setVisibleSection = section => {
-  setSectionsToDefault();
   section.style.opacity = 1;
-  section.style.zIndex = 1;
+  section.style.zIndex = 10;
+};
+
+const newChartOption = () => {
+  chartDiv.innerHTML = "";
+  const inputValues = [dataInput, valueTypeInput,labelTypeInput, titleInput];
+  inputValues.forEach(elem => elem.value = null);
+  createChartBtn.innerHTML = "Create";
+  setSectionsToDefault();
+  setVisibleSection(dataInputBox);
+
+};
+
+const updateChartOption = () => {
+  createChartBtn.innerHTML = "Update";
+  setVisibleSection(dataInputBox);
+};
+
+const instructionsChartOption = () => {
+  setVisiblePage(instructionPage);
 }
 
 //chart manipulation
 const newBar = (value, max, data, key = "",chart,options) => {
   const bar = document.createElement("div");
+  bar.className ='bars';
   bar.style = `
   background: ${options.barColor};
   transition: 1s;
@@ -107,6 +126,21 @@ const newBar = (value, max, data, key = "",chart,options) => {
   const valueSpan = document.createElement("span");
   valueSpan.className = "bar-value";
   valueSpan.innerHTML = value;
+
+  bar.onmouseover = () => {
+    keySpan.style.transform = 'translate(-50%,-50%)rotate(90deg)scale(2)';
+    valueSpan.style.transform = 'translate(-50%,-50%)rotate(90deg)scale(3)';
+    valueSpan.style.marginTop = '-150px';
+    bar.style.width = `${((value/max)*100) == 100 ? ((value/max)*100) : ((value/max)*100) + 15}%`;
+    bar.style.background = options.hoverColor;
+  }
+
+  bar.onmouseout = () => {
+    keySpan.style.transform = null;
+    valueSpan.style.transform = null;
+    bar.style.width = `${((value/max)*100)}%`;
+    bar.style.background = options.barColor;
+  }
 
   bar.appendChild(keySpan);
   bar.appendChild(valueSpan);
@@ -156,17 +190,43 @@ const drawChart = (data, options) => {
   
   createBars(data,chart,options);
   
+  const optionsMenu = document.createElement("div");
+  optionsMenu.className = 'optionsMenu';
+  const newChartBtn = document.createElement("button");
+  newChartBtn.className = 'optionsMenuBtns newBuild-btn';
+  newChartBtn.innerHTML = "New chart";
+  newChartBtn.onclick = () => {
+    newChartOption();
+  }
+  const updateChartBtn = document.createElement("button");
+  updateChartBtn.className = 'optionsMenuBtns updateBuild-btn'
+  updateChartBtn.innerHTML = "Update chart";
+  updateChartBtn.onclick = () => {
+    updateChartOption();
+  }
+  const instructionsChartBtn = document.createElement("button");
+  instructionsChartBtn.className = 'optionsMenuBtns instructionBuild-btn';
+  instructionsChartBtn.innerHTML = "How To";
+
+
+
+  optionsMenu.appendChild(newChartBtn);
+  optionsMenu.appendChild(updateChartBtn);
+  optionsMenu.appendChild(instructionsChartBtn);
+
   chartDiv.appendChild(title);
   chartDiv.appendChild(chart);
+  chartDiv.appendChild(optionsMenu);
   chart.appendChild(value);
   chart.appendChild(label);
 
+  options.created = true;
   
 };
 
 const collectData = () => {
   const data = [];
-  dataInputArr = dataInput.value.split(' ');
+  dataInputArr = dataInput.value.trim().split(' ');
   for (let i = 0; i < dataInputArr.length; i += 2) {
     let valueLabelPair = [];
     valueLabelPair.push(Number(dataInputArr[i + 1]), dataInputArr[i])
@@ -180,10 +240,16 @@ const setValueLabelType = (options) => {
   options.labelType = labelTypeInput.value;
 }
 
+const setOptions = (options) => {
+  setValueLabelType(options);
+  options.title = titleInput.value;
+  options.barColor = colorInput.value;
+  options.hoverColor = hoverColorInput.value;
+}
+
 //handlers
 mainBtns.forEach(elem => {
   elem.onclick = () => {
-    setPagesToDefault();
     setVisiblePage(mainPage);
   };
 });
@@ -191,7 +257,7 @@ mainBtns.forEach(elem => {
 buildBtns.forEach(elem => {
   elem.onclick = () => {
     setVisiblePage(buildPage);
-    setVisibleSection(dataInputBox)
+    !options.created ? newChartOption() : setVisibleSection(chartDiv);
   };
 });
 
@@ -205,9 +271,12 @@ exampleBtn.onclick = () => {
 
 createChartBtn.onclick = () => {
   chartDiv.innerHTML = "";
-  setValueLabelType(options);
+  setOptions(options);
   drawChart(collectData(),options);
-  setVisibleSection(chartDiv);
+  dataInputBox.style.opacity = 0;
+  dataInputBox.style.zIndex = -1;
+  chartDiv.style.opacity = 9;
+  chartDiv.style.zIndex = 5;
  
 }
 
