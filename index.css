@@ -173,8 +173,11 @@ li span:hover {
   background: rgba(36, 33, 33,0.8);
 }
 
+.data-init p {
+  padding-bottom: 0;
+}
 .data-init input, label {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .data-init h5, button {
