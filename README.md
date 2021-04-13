@@ -1,6 +1,5 @@
 # WELCOME TO A SIMPLE CHART BUILDER!
 ### About:
-  A Lighthouse prep work strech project [info](https://web.compass.lighthouselabs.ca/activities/717)
 
   A simple Chart builder built with HTML/CSS/VanilaJs
 
